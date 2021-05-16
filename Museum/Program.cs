@@ -22,5 +22,6 @@ namespace Museum
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+    //  This is an inital test
     }
 }
