@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Muzeu.Models
+namespace Museum.Models
 {
     public class Incidents
     {
