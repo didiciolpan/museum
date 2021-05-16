@@ -23,5 +23,6 @@ namespace Museum
                     webBuilder.UseStartup<Startup>();
                 });
     //  This is an inital test
+    //  This is an inital test duplicate
     }
 }
