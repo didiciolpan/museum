@@ -1,0 +1,28 @@
+<h1 id="tableLabel">Incidents</h1>
+
+<p>This component lists the incidents</p>
+
+<p *ngIf="!incidents"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="incidents">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Priority</th>
+      <th>Date</th>
+      <th>Solved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let incident of incidents">
+      <td>{{ incident.id }}</td>
+      <td>{{ incident.name }}</td>
+      <td>{{ incident.description }}</td>
+      <td>{{ incident.priority }}</td>
+      <td>{{ incident.date }}</td>
+      <td>{{ incident.solved }}</td>
+    </tr>
+  </tbody>
+</table>
