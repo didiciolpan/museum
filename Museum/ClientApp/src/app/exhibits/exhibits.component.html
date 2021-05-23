@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Exhibits</h1>
+
+<p>This component lists the exhibits in our Museum.</p>
+
+<p *ngIf="!exhibits"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="exhibits">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let exhibits of exhibits">
+            <td>{{ exhibits.id }}</td>
+            <td>{{ exhibits.name }}</td>
+            <td>{{ exhibits.author }}</td>
+            <td>{{ exhibits.year }}</td>
+        </tr>
+    </tbody>
+</table>

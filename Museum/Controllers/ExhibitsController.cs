@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Museum.Data;
 using Museum.Models;
+using Museum.ViewModels;
 
 namespace Museum.Controllers
 {
@@ -28,18 +29,45 @@ namespace Museum.Controllers
             return await _context.Exhibits.ToListAsync();
         }
 
+        /// <summary>
+        /// Returns Exhibits between selected years
+        /// </summary>
+        /// <param name="yearStart">Start Year</param>
+        /// <param name="yearEnd">End Year</param>
+        /// <returns>A list of exhibits between given range</returns>
+        [HttpGet]
+        [Route("filter/{yearStart & yearEnd}")]
+        public async Task<ActionResult<IEnumerable<Exhibits>>> FilterExhibits(int yearStart, int yearEnd)
+        {
+            var query = _context.Exhibits.Where(e => e.Year >= yearStart && e.Year <= yearEnd);
+
+            return await query.ToListAsync();
+        }
+
+        /// <summary>
+        /// Returns Exhibits by id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The searched exhibit</returns>
         // GET: api/Exhibits/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Exhibits>> GetExhibits(int id)
+        public async Task<ActionResult<ExhibitsViewModel>> GetExhibits(int id)
         {
             var exhibits = await _context.Exhibits.FindAsync(id);
+
+            var exhibitsViewModel = new ExhibitsViewModel
+            {
+                Name = exhibits.Name,
+                Author = exhibits.Author,
+                Year = exhibits.Year
+            };
 
             if (exhibits == null)
             {
                 return NotFound();
             }
 
-            return exhibits;
+            return exhibitsViewModel;
         }
 
         // PUT: api/Exhibits/5
