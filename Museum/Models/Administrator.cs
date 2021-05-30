@@ -11,11 +11,13 @@ namespace Museum.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
+
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+
         public string Password { get; set; }
-        [Range(10, 100,
-        ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public string Function { get; set; }
 
     }
