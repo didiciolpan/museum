@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Administrators</h1>
+
+<p>This component list the administrators.</p>
+
+<p *ngIf="!administrators"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="administrators">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Emial</th>
+      <th>Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admin of administrators">
+      <td>{{ admin.id }}</td>
+      <td>{{ admin.name }}</td>
+      <td>{{ admin.email }}</td>
+      <td>{{ admin.function }}</td>
+    </tr>
+  </tbody>
+</table>
